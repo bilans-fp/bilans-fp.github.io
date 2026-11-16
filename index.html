@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Bilans offerts Fitness Park</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Bilans FP">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#3f444d">
+<meta name="robots" content="noindex, nofollow">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icone-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+  html, body { margin: 0; height: 100%; background: #3f444d; overflow: hidden; }
+  iframe { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; background: #fff; }
+</style>
+</head>
+<body>
+<!-- Adresse de l'appli Apps Script (Déployer > Gérer les déploiements). À remplacer par l'URL /exec une fois déployée. -->
+<iframe id="appli" src="URL_APPLI_A_REMPLACER" title="Bilans offerts Fitness Park" allow="clipboard-write"></iframe>
+<div id="bientot" style="display:none;position:fixed;inset:0;color:#fff;font-family:-apple-system,Helvetica,Arial,sans-serif;text-align:center;padding:80px 24px">
+  <img src="icone-512.png" alt="" style="width:160px;height:160px;border-radius:36px">
+  <h1 style="font-size:24px;margin:24px 0 8px">Bilans offerts Fitness Park</h1>
+  <p style="color:#d4d4d4;font-size:17px">L'appli arrive très bientôt.</p>
+</div>
+<script>
+  // Tant que l'adresse de l'appli n'est pas renseignée, on affiche « bientôt » plutôt qu'une page cassée
+  if (document.getElementById('appli').getAttribute('src').indexOf('URL_APPLI') === 0) {
+    document.getElementById('appli').remove();
+    document.getElementById('bientot').style.display = 'block';
+  }
+</script>
+</body>
+</html>
