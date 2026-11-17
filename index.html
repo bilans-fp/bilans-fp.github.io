@@ -40,6 +40,7 @@
     try {
       if (m.bilansFP === 'garder' && /^[A-Z0-9]{3,12}$/.test(m.valeur)) localStorage.setItem(cle, m.valeur);
       else if (m.bilansFP === 'oublier') localStorage.removeItem(cle);
+      else if (m.bilansFP === 'vibrer') { if (navigator.vibrate) navigator.vibrate(12); } // Android : petite vibration à chaque appui
       else if (m.bilansFP === 'demande') e.source.postMessage({ bilansFP: 'code', valeur: localStorage.getItem(cle) || '' }, e.origin);
     } catch (err) { if (m.bilansFP === 'demande') e.source.postMessage({ bilansFP: 'code', valeur: '' }, e.origin); }
   });
