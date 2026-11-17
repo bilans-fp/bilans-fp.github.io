@@ -32,6 +32,17 @@
     document.getElementById('appli').remove();
     document.getElementById('bientot').style.display = 'block';
   }
+  // Mémoire du code du coach (17/11/2026) : gardée ici, sur bilans-fp.github.io, car Safari efface celle du cadre Google.
+  // L'appli demande le code au démarrage, le donne après une connexion réussie, le fait oublier sur « Changer de code ».
+  window.addEventListener('message', function (e) {
+    if (!/^https:\/\/([a-z0-9-]+[.-])?script\.googleusercontent\.com$/.test(e.origin) || !e.data || !e.data.bilansFP) return;
+    var cle = 'bilans_code', m = e.data;
+    try {
+      if (m.bilansFP === 'garder' && /^[A-Z0-9]{3,12}$/.test(m.valeur)) localStorage.setItem(cle, m.valeur);
+      else if (m.bilansFP === 'oublier') localStorage.removeItem(cle);
+      else if (m.bilansFP === 'demande') e.source.postMessage({ bilansFP: 'code', valeur: localStorage.getItem(cle) || '' }, e.origin);
+    } catch (err) { if (m.bilansFP === 'demande') e.source.postMessage({ bilansFP: 'code', valeur: '' }, e.origin); }
+  });
 </script>
 </body>
 </html>
